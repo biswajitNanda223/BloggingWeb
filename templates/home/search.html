@@ -1,0 +1,36 @@
+{% extends "index.html" %}
+
+{% block title %} search Results {% endblock title %}
+{% block blogsActive %}active{% endblock blogsActive %}
+{% block body %}
+    <div class="container my-3">
+      <h2>Search Results By BloggingWeb</h2>
+      {% if allposts|length < 1 %}
+      <p>No Search Results</p> 
+      your Search - <Strong>{{query}}</Strong> did not match any documents Sorry !
+      <br>
+      suggetions: 
+      <ul>
+        <li>Try Different Keywords</li>
+        <li>Try More general Keywords</li>
+        <li>Try Fewer Keywords</li>
+
+      </ul>
+  
+      {% endif %}
+      {% for post in allposts %}
+        <div class="row nogutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">{{post.author}}</strong>
+            <h3 class="mb-0">{{post.title}}</h3>
+            <div class="mb-1 text-muted">{{post.timeStamp}}</div>
+            <p class="card-text mb-auto">{{post.content | truncatechars:200}}</p>
+           <div class="my-2">
+            <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Continue Reading</a>
+           </div>
+          </div>
+          <div class="col-auto d-none d-lg-block"></div>
+        </div>
+        {% endfor %}
+      </div>
+{% endblock body %}

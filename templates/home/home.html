@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+{% block title %} Home {% endblock title %}
+{% block homeActive %}active{% endblock homeActive %}
+{% block body %}
+<div class="container my-3">
+    <div class="jumbotron">
+        <h1 class="display-4">Welcome to BloggingWeb</h1>
+        <p class="lead">This is a leadinfg blogpost platform existing now </p>
+        <hr class="my-4">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt velit incidunt debitis ullam rem id magnam libero neque. Distinctio maxime rem, veniam harum ullam maiores sapiente rerum odio quod aspernatur!</p>
+        <a href="/blog" class="btn btn-primary btn-lg" role="button" >Go to Blog</a>
+
+    </div>
+</div>
+<div class="container">
+    <div class="py-5 text-center">
+        <h2>Checkout Our Popular Blog Post</h2>
+        <p class="lead">By writing blog posts, you can demonstrate your expertise in a particular topic and attract new readers and followers. Additionally, blogging can help you improve your writing skills and learn new things.</p>
+
+    </div>
+    {% comment %} <div class="container my-3">
+        <h2>Coding Articles By BloggingWeb</h2>
+        <div class="row nogutters border rounded overflow-hidden flex-md-row my-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <strong class="d-inline-block mb-2 text-primary">World</strong>
+            <h3 class="mb-0">Featured post</h3>
+            <div class="mb-1 text-muted">Nov 12</div>
+            <p class="card-text mb-auto">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus debitis voluptatem nostrum molestias rem quam ab exercitationem illo aliquid facilis similique quae ullam sapiente esse natus expedita, iure dolores. Ipsam!</p>
+            <a href="#" class="stretched">Continue Reading</a>
+          </div>
+          <div class="col-auto d-none d-lg-block"></div>
+        </div>
+      </div> {% endcomment %}
+      
+    <div class="row">
+      {% for post in allposts  %}
+      <div class="col-md-4" >
+        <div class="card" style="width: 18rem;">
+          <img src="https://picsum.photos/500/400?{{post.title}}" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{post.title | truncatechars:15}}</h5>
+            <p class="card-text">{{post.content| truncatechars:100}}</p>
+            <a href="/blog/{{post.slug}}" role="button" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+      
+      {% endfor %}
+    </div>
+</div>
+{% endblock body %}

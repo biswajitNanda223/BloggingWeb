@@ -1,0 +1,8 @@
+{
+    "C_Cpp.dimInactiveRegions": false,
+    "editor.mouseWheelZoom": true,
+    "emmet.includeLanguages": {
+        "django-html": "html"
+    },
+    "git.ignoreLimitWarning": true,
+}
